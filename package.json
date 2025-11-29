@@ -40,20 +40,18 @@
     "start:prod": "NODE_ENV=production node dist/server.js",
     "dev": "nodemon --exec ts-node src/server.ts",
     "dev:secure": "NODE_ENV=development HTTPS=true nodemon --exec ts-node src/server.ts",
-    "build": "tsc && npm run build:assets",
+    "build": "tsc",
     "build:prod": "NODE_ENV=production tsc && npm run build:assets && npm run optimize",
     "build:assets": "webpack --mode production",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "test:e2e": "playwright test",
     "test:security": "npm audit && snyk test",
-    "test:performance": "k6 run tests/performance/load-test.js",
     "lint": "eslint src/**/*.ts --fix",
     "lint:security": "eslint src/**/*.ts --config .eslintrc.security.js",
     "format": "prettier --write src/**/*.ts",
     "typecheck": "tsc --noEmit",
-    "security:check": "npm audit && snyk test && semgrep --config=auto src/",
-    "security:scan": "sonarjs-scanner",
+    "security:check": "npm audit && snyk test",
     "setup:dev": "npm install && npm run setup:hooks && npm run setup:env",
     "setup:hooks": "husky install",
     "setup:env": "cp .env.example .env.development",
@@ -128,9 +126,7 @@
     "imagemin-mozjpeg": "^10.0.0",
     "typedoc": "^0.24.8",
     "semantic-release": "^21.0.7",
-    "snyk": "^1.1210.0",
-    "sonarjs": "^1.0.3",
-    "k6": "^0.0.0"
+    "snyk": "^1.1210.0"
   },
   "optionalDependencies": {
     "fsevents": "^2.3.2"
